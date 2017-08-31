@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser(description='Submit Reserved Spots, default spo
 parser.add_argument('-i', '--id', type=int, required=True, help= 'Input ID')
 
 #url argument
-parser.add_argument('-u', '--url', required=True, help='Input The Permalink')
+parser.add_argument('-p', '--perma', required=True, help='Input The Permalink')
 
 #spots argument
 parser.add_argument('-s', '--Spots', nargs=4, default=['3','7','13','20'], metavar=('spot1','spot2', 'spot3', 'spot4'), help='Input Reserved Spots')
@@ -33,7 +33,7 @@ for i in args.Spots:
     count = count + 1
     
     #variable to hold the permalink 
-    url = args.url + "?task_id=" + str(args.id + int(i))
+    url = "http://www.openmicordinaire.com/Open-Mic-sheets/" + args.perma + "/?task_id=" + str(args.id + int(i))
 
     #variable to hold information
     payload = {'signup_firstname' : 'Reserved For In', 'signup_lastname' : 'Person Sign-up', 'signup_email' : 'inperson' + str(count) + '@gmail.com', 'signup_twitter_handle':'','signup_facebook_page':'','dlssus_submitted': str(args.id),'Submit': 'Sign me up!'}
