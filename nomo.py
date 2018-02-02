@@ -3,7 +3,7 @@
 ##############################
 #Name: nOmO
 #Author: Jose R. Hernandez
-#Version:0.2
+#Version:0.3
 ##############################
 
 import sys
@@ -35,11 +35,11 @@ for row in contents:
 names = []
 
 #fill names array with all names
-for i in range(1,25):
+for i in range(1,len(data)):
     names.append(str(data[i][7]) + str(" ") + str(data[i][8]))
 
 #remove In Person Sign-Up from names array
-for j in range(0,24):
+for j in range(0,len(names)):
     if names[j] == "Reserved For In Person Sign-up":
         names[j] = " "
 
@@ -50,7 +50,7 @@ with open(time.strftime("names_%m%d%Y.csv"), 'w') as csvfile:
     spamwriter.writerow(["Open Mic Ordinaire"])
     spamwriter.writerow(["Date:", time.strftime("%A, %B %d, %Y")])
     spamwriter.writerow(["Spot", "Name"])
-    for k in range(0,24):
+    for k in range(0,len(names)):
         spamwriter.writerow(["Spot %s" % (k + 1), names[k]])
 
     for l in range(1,5):
